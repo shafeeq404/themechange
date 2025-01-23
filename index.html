@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Theme</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <h2>MO Safeek<span>...</span></h2>
+            <div class="nav-items">
+                <nav>Home</nav>
+                <nav>About</nav>
+                <nav>Contact</nav>
+                <nav>
+                    <select id="themeSelector" onchange="changeTheme(this.value)">
+                        <option value="default">Default</option>
+                        <option value="red">Red</option>
+                        <option value="crimson">Crimson</option>
+                        <option value="green">Green</option>
+                        <option value="yellow">Yellow</option>
+                    </select>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <p id="para">Customize your website<br> with <span>Beautiful<br>Colours...</span></p>
+        <p class="paragraph">If you want to dynamically change colors in<br> HTML using JavaScript, you can use the<br>
+            style property of DOM elements to set their<br> CSS properties.</p>
+        <button>Explore me</button>
+    </main>
+
+    <script>
+        function changeTheme(theme) {
+            let navbar = document.getElementsByClassName('navbar');
+            let content = document.getElementsByClassName('content');
+            let themeSelector = document.getElementById('themeSelector');
+
+            // Define different themes with their colors
+            const themes = {
+                default: { navbarBgColor: 'burlywood', navbarColor: '#333', contentBgColor: 'azure', contentColor: '#333' },
+                red: { navbarBgColor: 'red', navbarColor: 'white', contentBgColor: 'white', contentColor: 'green' },
+                crimson: { navbarBgColor: 'crimson', navbarColor: 'white', contentBgColor: 'aqua', contentColor: 'navy' },
+                green: { navbarBgColor: 'green', navbarColor: 'white', contentBgColor: 'lightgreen', contentColor: 'orange' },
+                yellow: { navbarBgColor: 'yellow', navbarColor: 'darkblue', contentBgColor: 'lightyellow', contentColor: 'blue' }
+            };
+
+            // Apply selected theme
+            const selectedTheme = themes[theme];
+
+            // Change navbar background color and text color
+            for (let i = 0; i < navbar.length; i++) {
+                navbar[i].style.backgroundColor = selectedTheme.navbarBgColor;
+                navbar[i].style.color = selectedTheme.navbarColor;
+            }
+
+            // Change content background color and text color
+            for (let i = 0; i < content.length; i++) {
+                content[i].style.backgroundColor = selectedTheme.contentBgColor;
+                content[i].style.color = selectedTheme.contentColor;
+            }
+        }
+    </script>
+</body>
+
+</html>
